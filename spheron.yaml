@@ -1,0 +1,44 @@
+version: "1.0"
+
+services:
+  pyanoxyz-demo:
+    image: rekpero/pyanoxyz-demo:v1
+    expose:
+      - port: 52555
+        as: 52555
+        to:
+          - global: true
+profiles:
+  name: pyanoxyz-demo
+  duration: 1h
+  tier:
+    - community
+  compute:
+    pyanoxyz-demo:
+      resources:
+        cpu:
+          units: 10
+        memory:
+          size: 16Gi
+        storage:
+          - size: 100Gi
+        gpu:
+          units: 1
+          attributes:
+            vendor:
+              nvidia:
+                - model: rtx3090
+  placement:
+    westcoast:
+      attributes:
+        region: canada
+      pricing:
+        pyanoxyz-demo:
+          denom: USDT
+          amount: 10000000
+
+deployment:
+  pyanoxyz-demo:
+    westcoast:
+      profile: pyanoxyz-demo
+      count: 1
