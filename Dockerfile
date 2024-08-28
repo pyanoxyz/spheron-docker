@@ -31,7 +31,7 @@ USER llama
 
 WORKDIR /home/llama
 
-EXPOSE 8080
+EXPOSE 52555
 
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
