@@ -1,1 +1,0 @@
-# spheron-docker
